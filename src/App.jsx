@@ -1,5 +1,11 @@
+import AppBar from "./components/AppBar/AppBar";
+
 const App = () => {
-  return <div> hello</div>;
+  return (
+    <div>
+      <AppBar />
+    </div>
+  );
 };
 
 export default App;

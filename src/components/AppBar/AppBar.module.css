@@ -1,0 +1,13 @@
+.divInfo {
+  display: flex;
+  background-color: #fff;
+  color: black;
+  flex-direction: row;
+  /* gap: 80px; */
+  /* justify-content: center; */
+  padding: 24px 64px;
+}
+
+.travelLogo {
+  display: flex;
+}
