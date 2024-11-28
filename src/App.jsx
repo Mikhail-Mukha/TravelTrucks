@@ -1,10 +1,18 @@
-import AppBar from "./components/AppBar/AppBar";
+// import AppBar from "./components/AppBar/AppBar";
+
+import { Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout/Layout";
+import HomePage from "./pages/HomePage/HomePage";
+import CatalogPage from "./pages/CatalogPage/CatalogPage";
 
 const App = () => {
   return (
-    <div>
-      <AppBar />
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="/catalog" element={<CatalogPage />} />
+      </Route>
+    </Routes>
   );
 };
 
