@@ -7,7 +7,7 @@ const filtersSlice = createSlice({
     equipment: [],
   },
   reducers: {
-    setCamperType(state, action) {
+    setType(state, action) {
       state.type = action.payload;
     },
     setEquipment(state, action) {
@@ -22,7 +22,7 @@ const filtersSlice = createSlice({
     },
     resetFilters(state) {
       state.type = "";
-      state.equipment = "";
+      state.equipment = [];
     },
   },
 });

@@ -1,7 +1,8 @@
 import s from "./CatalogSideBar.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setCamperType, setEquipment } from "../../store/filters/slice";
+import { setType, setEquipment } from "../../redux/filters/slice";
 import { selectEquipment, selectType } from "../../redux/filters/selectors";
+import { fetchCampers } from "../../redux/campers/operations";
 
 const CatalogSideBar = () => {
   const type = useSelector(selectType);
@@ -9,12 +10,17 @@ const CatalogSideBar = () => {
   const dispatch = useDispatch();
 
   const handleSetCamperType = (newType) => {
-    dispatch(setCamperType(newType));
+    dispatch(setType(newType));
   };
 
   const handleSetEquipment = (item) => {
     dispatch(setEquipment({ item }));
   };
+
+  const handleSearch = () => {
+    dispatch(fetchCampers());
+  };
+
   return (
     <div className={s.catalogSideBar}>
       <h3 className={s.titleLocation}>Location</h3>
@@ -90,7 +96,9 @@ const CatalogSideBar = () => {
         </button>
       </div>
 
-      <button className={s.searchButton}> Search</button>
+      <button className={s.searchButton} onClick={handleSearch}>
+        Search
+      </button>
     </div>
   );
 };
