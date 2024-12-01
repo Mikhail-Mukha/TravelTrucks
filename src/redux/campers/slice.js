@@ -1,28 +1,9 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-
-export const fetchCampers = createAsyncThunk(
-  "catalog/campers",
-  async (filters, { rejectWithValue }) => {
-    try {
-      const res = await axios.get(
-        "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers",
-        {
-          params: filters,
-        }
-      );
-      return res.data;
-    } catch (error) {
-      return rejectWithValue(error.res.data);
-    }
-  }
-);
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchCampers } from "./operations";
 
 const initialState = {
   items: [],
   status: "idle",
-  campers: [],
-  filters: {},
   error: null,
 };
 
@@ -34,7 +15,7 @@ const campersSlice = createSlice({
       state.filters = action.payload;
     },
     resetVehicles(state) {
-      state.campers = [];
+      state.items = [];
     },
   },
   extraReducers: (builder) => {
@@ -44,7 +25,7 @@ const campersSlice = createSlice({
       })
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.campers = action.payload;
+        state.items = action.payload;
       })
       .addCase(fetchCampers.rejected, (state, action) => {
         state.status = "failed";

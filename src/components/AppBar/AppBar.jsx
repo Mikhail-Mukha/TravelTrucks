@@ -1,7 +1,6 @@
 import s from "./AppBar.module.css";
 import Navigation from "../Navigation/Navigation";
 import { NavLink } from "react-router-dom";
-// import SvgIcon from "../SvgIcon/SvgIcon";
 import sprite from "../../photos/Icons/TravelTracks.svg";
 
 const AppBar = () => {
