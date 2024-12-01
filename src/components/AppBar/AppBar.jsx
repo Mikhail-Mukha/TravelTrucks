@@ -1,12 +1,17 @@
 import s from "./AppBar.module.css";
 import Navigation from "../Navigation/Navigation";
+import { NavLink } from "react-router-dom";
+// import SvgIcon from "../SvgIcon/SvgIcon";
+import sprite from "../../photos/Icons/TravelTracks.svg";
 
 const AppBar = () => {
   return (
     <div className={s.divInfo}>
-      <p className={s.travelLogo}>
-        Travel<span className={s.spanTravelLogo}>Tracks</span>
-      </p>
+      <NavLink className={s.travelLogo} to="/">
+        <svg className="icon" fill="none" width="136" height="16">
+          <use xlinkHref={`${sprite}#TravelTracks`}></use>
+        </svg>
+      </NavLink>
       <Navigation />
     </div>
   );

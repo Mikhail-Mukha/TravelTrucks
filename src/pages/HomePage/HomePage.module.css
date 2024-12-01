@@ -1,4 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
 .homePage {
-  background-image: url("../../photos/TravelTrucksBackground.jpg") no-repeat
-    center center fixed;
+  background: url("../../photos/TravelTrucksBackground.jpg") no-repeat center
+    center fixed;
+  background-size: cover;
+  height: 100vh;
+  background-position: top center;
+  padding-top: 1px;
+}
+
+.titleHomePage {
+  color: #f7f7f7;
+  font-family: Inter;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0.66em;
+  margin: 260px 0 0 64px;
+}
+
+.paragraphHomePage {
+  color: #f7f7f7;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.33em;
+  margin: 16px 0 0 64px;
+}
+
+.navLinkButton {
+  text-decoration: none;
+  color: #fff;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5em;
+  letter-spacing: -0.005em;
+  display: flex;
+  width: 173px;
+  height: 56px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 200px;
+  background: #e44848;
+  margin: 40px 0 0 64px;
+}
+
+.navLinkButton:focus,
+.navLinkButton:hover {
+  background: #d84343;
 }

@@ -6,8 +6,34 @@
 .navLinkHome {
   text-decoration: none;
   margin-left: 450px;
+  color: #101828;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5em;
+}
+
+.navLinkHome:focus,
+.navLinkHome:hover,
+.navLinkHome:active {
+  color: #d84343;
 }
 
 .navLinkCatalog {
   text-decoration: none;
+  color: #101828;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5em;
+}
+
+.navLinkCatalog:focus,
+.navLinkCatalog:hover,
+.navLinkCatalog:active {
+  color: #d84343;
 }
