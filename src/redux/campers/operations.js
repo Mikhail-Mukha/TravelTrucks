@@ -5,25 +5,29 @@ export const fetchCampers = createAsyncThunk(
   "campers/fetchCampers",
   async (_, { getState, rejectWithValue }) => {
     try {
-      const { camperType, equipment } = getState().filters;
+      const { AC, transmission, kitchen, TV, bathroom, form } =
+        getState().filters;
 
-      const params = new URLSearchParams({
-        type: camperType || "",
-        equipment: equipment.join(",") || "",
-      }).toString();
+      const params = {
+        form: form || "",
+        AC: AC || undefined,
+        transmission: transmission || "",
+        kitchen: kitchen || undefined,
+        TV: TV || undefined,
+        bathroom: bathroom || undefined,
+      };
 
-      const response = await fetch(`${travelTrucksApi}?${params}`);
+      const response = await travelTrucksApi.get("/", {
+        params: params,
+      });
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch campers");
+      if (response.status !== 200) {
+        throw new Error(`Failed to fetch campers: ${response.statusText}`);
       }
-      const data = await response.json();
-      if (data.items && Array.isArray(data.items)) {
-        return data.items;
-      } else {
-        throw new Error("Incorrect data structure");
-      }
+
+      return response.data;
     } catch (error) {
+      console.error("Error fetching campers:", error.message);
       return rejectWithValue(error.message);
     }
   }

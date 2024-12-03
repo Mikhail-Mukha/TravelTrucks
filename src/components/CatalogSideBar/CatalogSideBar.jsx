@@ -1,24 +1,64 @@
 import s from "./CatalogSideBar.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setType, setEquipment } from "../../redux/filters/slice";
-import { selectEquipment, selectType } from "../../redux/filters/selectors";
+import {
+  setForm,
+  setAC,
+  setTransmission,
+  setKitchen,
+  setTV,
+  setBathroom,
+  resetFilters,
+} from "../../redux/filters/slice";
+import {
+  selectAC,
+  selectTransmission,
+  selectKitchen,
+  selectTV,
+  selectBathroom,
+  selectForm,
+} from "../../redux/filters/selectors";
 import { fetchCampers } from "../../redux/campers/operations";
 
 const CatalogSideBar = () => {
-  const type = useSelector(selectType);
-  const equipment = useSelector(selectEquipment);
   const dispatch = useDispatch();
+  const form = useSelector(selectForm);
+  const AC = useSelector(selectAC);
+  const transmission = useSelector(selectTransmission);
+  const kitchen = useSelector(selectKitchen);
+  const TV = useSelector(selectTV);
+  const bathroom = useSelector(selectBathroom);
 
-  const handleSetCamperType = (newType) => {
-    dispatch(setType(newType));
+  const handleSetCamperForm = (newType) => {
+    dispatch(setForm(newType));
   };
 
-  const handleSetEquipment = (item) => {
-    dispatch(setEquipment({ item }));
+  const handleSetAC = (value) => {
+    dispatch(setAC(value));
+  };
+
+  const handleSetTransmission = (value) => {
+    dispatch(setTransmission(value));
+  };
+
+  const handleSetKitchen = (value) => {
+    dispatch(setKitchen(value));
+  };
+
+  const handleSetTV = (value) => {
+    dispatch(setTV(value));
+  };
+
+  const handleSetBathroom = (value) => {
+    dispatch(setBathroom(value));
   };
 
   const handleSearch = () => {
     dispatch(fetchCampers());
+  };
+
+  const handleResetFilters = () => {
+    dispatch(resetFilters());
+    dispatch(fetchCampers({}));
   };
 
   return (
@@ -28,45 +68,43 @@ const CatalogSideBar = () => {
 
       <h3 className={s.titleFilters}>Filters</h3>
 
+      <button onClick={handleResetFilters} className={s.resetButton}>
+        Скинути фільтри
+      </button>
+
       <div className={s.divVehicleEquipment}>
         <h2 className={s.vehicleEquipment}>Vehicle equipment</h2>
         <button
-          className={`${s.filterButton} ${
-            equipment.includes("AC") ? s.active : ""
-          }`}
-          onClick={() => handleSetEquipment("AC")}
+          className={`${s.filterButton} ${AC ? s.active : ""}`}
+          onClick={() => handleSetAC(!AC)}
         >
           AC
         </button>
         <button
-          className={`${s.filterButton} ${
-            equipment.includes("Automatic") ? s.active : ""
-          }`}
-          onClick={() => handleSetEquipment("Automatic")}
+          className={`${s.filterButton} ${transmission ? s.active : ""}`}
+          onClick={() =>
+            handleSetTransmission(
+              transmission === "Automatic" ? "" : "Automatic"
+            )
+          }
         >
           Automatic
         </button>
         <button
-          className={`${s.filterButton} ${
-            equipment.includes("Kitchen") ? s.active : ""
-          }`}
-          onClick={() => handleSetEquipment("Kitchen")}
+          className={`${s.filterButton} ${kitchen ? s.active : ""}`}
+          onClick={() => handleSetKitchen(!kitchen)}
         >
           Kitchen
         </button>
         <button
-          className={`${s.filterButton} ${
-            equipment.includes("TV") ? s.active : ""
-          }`}
-          onClick={() => handleSetEquipment("TV")}
+          className={`${s.filterButton} ${TV ? s.active : ""}`}
+          onClick={() => handleSetTV(!TV)}
         >
           TV
         </button>
         <button
-          className={`${s.filterButton} ${
-            equipment.includes("Bathroom") ? s.active : ""
-          }`}
-          onClick={() => handleSetEquipment("Bathroom")}
+          className={`${s.filterButton} ${bathroom ? s.active : ""}`}
+          onClick={() => handleSetBathroom(!bathroom)}
         >
           Bathroom
         </button>
@@ -75,22 +113,22 @@ const CatalogSideBar = () => {
       <div className={s.divVehicleType}>
         <h2 className={s.vehicleType}>Vehicle type</h2>
         <button
-          className={`${s.filterButton} ${type === "Van" ? s.active : ""}`}
-          onClick={() => handleSetCamperType("Van")}
+          className={`${s.filterButton} ${form === "Van" ? s.active : ""}`}
+          onClick={() => handleSetCamperForm("Van")}
         >
           Van
         </button>
         <button
           className={`${s.filterButton} ${
-            type === "Fully Integrated" ? s.active : ""
+            form === "Fully Integrated" ? s.active : ""
           }`}
-          onClick={() => handleSetCamperType("Fully Integrated")}
+          onClick={() => handleSetCamperForm("Fully Integrated")}
         >
           Fully Integrated
         </button>
         <button
-          className={`${s.filterButton} ${type === "Alcove" ? s.active : ""}`}
-          onClick={() => handleSetCamperType("Alcove")}
+          className={`${s.filterButton} ${form === "Alcove" ? s.active : ""}`}
+          onClick={() => handleSetCamperForm("Alcove")}
         >
           Alcove
         </button>

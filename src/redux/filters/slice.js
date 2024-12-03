@@ -3,29 +3,51 @@ import { createSlice } from "@reduxjs/toolkit";
 const filtersSlice = createSlice({
   name: "filters",
   initialState: {
-    type: "",
-    equipment: [],
+    AC: false,
+    transmission: "",
+    kitchen: false,
+    TV: false,
+    bathroom: false,
+    form: "",
   },
   reducers: {
-    setType(state, action) {
+    setForm(state, action) {
       state.type = action.payload;
     },
-    setEquipment(state, action) {
-      const { item } = action.payload;
-      const currentEquipment = state.equipment;
-
-      if (currentEquipment.includes(item)) {
-        state.equipment = currentEquipment.filter((eq) => eq !== item);
-      } else {
-        state.equipment = [...currentEquipment, item];
-      }
+    setTransmission(state, action) {
+      state.transmission = action.payload;
+    },
+    setAC(state, action) {
+      state.AC = action.payload;
+    },
+    setKitchen(state, action) {
+      state.kitchen = action.payload;
+    },
+    setTV(state, action) {
+      state.TV = action.payload;
+    },
+    setBathroom(state, action) {
+      state.bathroom = action.payload;
     },
     resetFilters(state) {
-      state.type = "";
-      state.equipment = [];
+      state.AC = false;
+      state.transmission = "";
+      state.kitchen = false;
+      state.TV = false;
+      state.bathroom = false;
+      state.form = "";
     },
   },
 });
 
-export const { setType, setEquipment, resetFilters } = filtersSlice.actions;
+export const {
+  setForm,
+  setTransmission,
+  setAC,
+  setKitchen,
+  setTV,
+  setBathroom,
+  resetFilters,
+} = filtersSlice.actions;
+
 export default filtersSlice.reducer;
