@@ -111,7 +111,7 @@ const CatalogSideBar = () => {
       </div>
 
       <div className={s.divVehicleType}>
-        <h2 className={s.vehicleType}>Vehicle type</h2>
+        <h2 className={s.titleVehicleType}>Vehicle type</h2>
         <button
           className={`${s.filterButton} ${form === "Van" ? s.active : ""}`}
           onClick={() => handleSetCamperForm("Van")}

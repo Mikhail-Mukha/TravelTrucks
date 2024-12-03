@@ -1,5 +1,6 @@
-import CatalogSideBar from "../../components/CatalogSideBar/CatalogSideBar.jsx";
-import CatalogVehicles from "../../components/CatalogVehicles/CatalogVehicles.jsx";
+
+import CatalogSideBar from "../../components/CatalogSideBar/CatalogSideBar.JSX";
+import CatalogVehicles from "../../components/CatalogVehicles/CatalogVehicles.JSX";
 import s from "./CatalogPage.module.css";
 
 const CatalogPage = () => {

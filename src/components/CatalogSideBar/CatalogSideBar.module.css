@@ -1,3 +1,34 @@
+.catalogSideBar {
+  margin: 48px 64px 0 64px;
+}
+
+.titleLocation {
+  color: #6c717b;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5em;
+  margin: 0;
+}
+.buttonLocation {
+  padding: 18px 218px 18px 20px;
+}
+.titleFilters {
+}
+.resetButton {
+}
+.divVehicleEquipment {
+}
+.vehicleEquipment {
+}
+.filterButton {
+}
+.divVehicleType {
+}
+.titleVehicleType {
+}
+
 .searchButton {
   text-decoration: none;
   color: #fff;
