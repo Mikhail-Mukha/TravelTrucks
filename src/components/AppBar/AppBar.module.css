@@ -1,9 +1,13 @@
 .divInfo {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
   display: flex;
-  background-color: #fff;
   color: black;
   justify-content: space-between;
   padding: 24px 64px;
+  border-bottom: 1px solid var(--Badges, #f2f4f7);
+  background: var(--Inputs, #f7f7f7);
 }
 
 .travelLogo {

@@ -1,4 +1,158 @@
-.resetButton {
+.camperCard {
+  width: 100%;
+  display: flex;
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid #dadde1;
+  background: #fff;
+}
+
+.gallery {
+  width: 292px;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-right: 24px;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.camperInfo {
+  max-width: 524px;
+}
+
+.namePrise {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.camperName {
+  color: #101828;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33em;
+  margin: 0;
+}
+
+.camperPrice {
+  color: var(--Main, #101828);
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33em;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 0;
+}
+
+.heartButton {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.heartButton:focus {
+  fill: #e44848;
+}
+
+.heartIconBtn {
+  width: 26px;
+  height: 24px;
+}
+
+.ratingLocation {
+  display: flex;
+  gap: 16px;
+}
+
+.starFilterIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.camperRating {
+  color: #101828;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5em;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  gap: 4px;
+}
+
+.locationMapIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.camperLocation {
+  color: #101828;
+  display: flex;
+  align-items: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5em;
+  margin: 0;
+  gap: 4px;
+}
+
+.camperDescription {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #475467;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5em;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.camperFilterResult {
+  display: flex;
+  max-width: 392px;
+}
+
+.camperList {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.camperItem {
+  display: flex;
+  box-sizing: border-box;
+  padding: 12px 18px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px;
+  background: #f2f4f7;
+  mix-blend-mode: multiply;
+}
+
+.FilterBtn {
+  width: 20px;
+  height: 20px;
+}
+
+.showMoreBtn {
   text-decoration: none;
   color: #fff;
   font-family: Inter;
@@ -8,16 +162,12 @@
   line-height: 1.5em;
   letter-spacing: -0.005em;
   display: flex;
-  width: 173px;
+  width: 166px;
   height: 56px;
   justify-content: center;
   align-items: center;
   border-radius: 200px;
+  border: none;
   background: #e44848;
-  margin: 40px 0 0 64px;
-}
-
-.resetButton:hover,
-.resetButton.focus {
-  background: #d84343;
+  margin-top: 24px;
 }
