@@ -18,6 +18,7 @@ import {
   selectForm,
 } from "../../redux/filters/selectors";
 import { fetchCampers } from "../../redux/campers/operations";
+import SvgIcon from "../SvgIcon/SvgIcon";
 
 const CatalogSideBar = () => {
   const dispatch = useDispatch();
@@ -64,7 +65,10 @@ const CatalogSideBar = () => {
   return (
     <div className={s.catalogSideBar}>
       <h3 className={s.titleLocation}>Location</h3>
-      <button className={s.buttonLocation}>Kyiv, Ukraine</button>
+      <button className={s.buttonLocation}>
+        <SvgIcon id="icon-locationMap" className={s.locationMapBtn} />
+        Kyiv, Ukraine
+      </button>
 
       <h3 className={s.titleFilters}>Filters</h3>
 
@@ -72,67 +76,68 @@ const CatalogSideBar = () => {
         Скинути фільтри
       </button>
 
-      <div className={s.divVehicleEquipment}>
-        <h2 className={s.vehicleEquipment}>Vehicle equipment</h2>
-        <button
-          className={`${s.filterButton} ${AC ? s.active : ""}`}
-          onClick={() => handleSetAC(!AC)}
-        >
-          AC
-        </button>
-        <button
-          className={`${s.filterButton} ${transmission ? s.active : ""}`}
-          onClick={() =>
-            handleSetTransmission(
-              transmission === "Automatic" ? "" : "Automatic"
-            )
-          }
-        >
-          Automatic
-        </button>
-        <button
-          className={`${s.filterButton} ${kitchen ? s.active : ""}`}
-          onClick={() => handleSetKitchen(!kitchen)}
-        >
-          Kitchen
-        </button>
-        <button
-          className={`${s.filterButton} ${TV ? s.active : ""}`}
-          onClick={() => handleSetTV(!TV)}
-        >
-          TV
-        </button>
-        <button
-          className={`${s.filterButton} ${bathroom ? s.active : ""}`}
-          onClick={() => handleSetBathroom(!bathroom)}
-        >
-          Bathroom
-        </button>
-      </div>
+      <h2 className={s.vehicleEquipment}>Vehicle equipment</h2>
 
-      <div className={s.divVehicleType}>
-        <h2 className={s.titleVehicleType}>Vehicle type</h2>
-        <button
-          className={`${s.filterButton} ${form === "Van" ? s.active : ""}`}
-          onClick={() => handleSetCamperForm("Van")}
-        >
-          Van
-        </button>
-        <button
-          className={`${s.filterButton} ${
-            form === "Fully Integrated" ? s.active : ""
-          }`}
-          onClick={() => handleSetCamperForm("Fully Integrated")}
-        >
-          Fully Integrated
-        </button>
-        <button
-          className={`${s.filterButton} ${form === "Alcove" ? s.active : ""}`}
-          onClick={() => handleSetCamperForm("Alcove")}
-        >
-          Alcove
-        </button>
-      </div>
+      <hr />
+
+      <button
+        className={`${s.filterButton} ${AC ? s.active : ""}`}
+        onClick={() => handleSetAC(!AC)}
+      >
+        AC
+      </button>
+      <button
+        className={`${s.filterButton} ${transmission ? s.active : ""}`}
+        onClick={() =>
+          handleSetTransmission(transmission === "Automatic" ? "" : "Automatic")
+        }
+      >
+        Automatic
+      </button>
+      <button
+        className={`${s.filterButton} ${kitchen ? s.active : ""}`}
+        onClick={() => handleSetKitchen(!kitchen)}
+      >
+        <SvgIcon id="icon-kitchenFilter" className={s.kitchenFilterBtn} />
+        Kitchen
+      </button>
+      <button
+        className={`${s.filterButton} ${TV ? s.active : ""}`}
+        onClick={() => handleSetTV(!TV)}
+      >
+        TV
+      </button>
+      <button
+        className={`${s.filterButton} ${bathroom ? s.active : ""}`}
+        onClick={() => handleSetBathroom(!bathroom)}
+      >
+        Bathroom
+      </button>
+
+      <h2 className={s.titleVehicleType}>Vehicle type</h2>
+
+      <hr />
+
+      <button
+        className={`${s.filterButton} ${form === "Van" ? s.active : ""}`}
+        onClick={() => handleSetCamperForm("Van")}
+      >
+        Van
+      </button>
+      <button
+        className={`${s.filterButton} ${
+          form === "Fully Integrated" ? s.active : ""
+        }`}
+        onClick={() => handleSetCamperForm("Fully Integrated")}
+      >
+        Fully Integrated
+      </button>
+      <button
+        className={`${s.filterButton} ${form === "Alcove" ? s.active : ""}`}
+        onClick={() => handleSetCamperForm("Alcove")}
+      >
+        Alcove
+      </button>
 
       <button className={s.searchButton} onClick={handleSearch}>
         Search
