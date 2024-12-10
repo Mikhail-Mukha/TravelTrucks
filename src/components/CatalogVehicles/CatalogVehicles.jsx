@@ -30,7 +30,7 @@ const CatalogVehicles = () => {
     if (kitchen) filters.kitchen = true;
     if (TV) filters.TV = true;
     if (bathroom) filters.bathroom = true;
-    if (form) filters.type = form;
+    if (form) filters.form = form;
 
     dispatch(fetchCampers(filters));
   }, [dispatch, AC, transmission, kitchen, TV, bathroom, form]);
@@ -98,7 +98,13 @@ const CatalogVehicles = () => {
                       </li>
                     )}
                     {camper.engine && (
-                      <li className={s.camperItem}>{camper.engine}</li>
+                      <li className={s.camperItem}>
+                        <SvgIcon
+                          id="icon-engineFilter"
+                          className={s.FilterBtn}
+                        />
+                        {camper.engine}
+                      </li>
                     )}
                     {camper.kitchen && (
                       <li className={s.camperItem}>

@@ -54,12 +54,21 @@ const CatalogSideBar = () => {
   };
 
   const handleSearch = () => {
-    dispatch(fetchCampers());
+    const filters = {
+      form,
+      AC,
+      transmission,
+      kitchen,
+      TV,
+      bathroom,
+    };
+
+    dispatch(fetchCampers(filters));
   };
 
   const handleResetFilters = () => {
     dispatch(resetFilters());
-    dispatch(fetchCampers({}));
+    dispatch(fetchCampers());
   };
 
   return (
@@ -128,17 +137,19 @@ const CatalogSideBar = () => {
 
       <div className={s.filterBtnGroup}>
         <button
-          className={`${s.filterButton} ${form === "Van" ? s.active : ""}`}
-          onClick={() => handleSetCamperForm("Van")}
+          className={`${s.filterButton} ${
+            form === "panelTruck" ? s.active : ""
+          }`}
+          onClick={() => handleSetCamperForm("panelTruck")}
         >
           <SvgIcon id="icon-vanFormFilter" className={s.vanFormFilterBtn} />
           Van
         </button>
         <button
           className={`${s.filterButton} ${
-            form === "Fully Integrated" ? s.active : ""
+            form === "fullyIntegrated" ? s.active : ""
           }`}
-          onClick={() => handleSetCamperForm("Fully Integrated")}
+          onClick={() => handleSetCamperForm("fullyIntegrated")}
         >
           <SvgIcon
             id="icon-fullyIntegratedForm"
@@ -147,8 +158,8 @@ const CatalogSideBar = () => {
           Fully Integrated
         </button>
         <button
-          className={`${s.filterButton} ${form === "Alcove" ? s.active : ""}`}
-          onClick={() => handleSetCamperForm("Alcove")}
+          className={`${s.filterButton} ${form === "alcove" ? s.active : ""}`}
+          onClick={() => handleSetCamperForm("alcove")}
         >
           <SvgIcon
             id="icon-alcoveFormFilter"

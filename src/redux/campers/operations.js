@@ -7,19 +7,18 @@ export const fetchCampers = createAsyncThunk(
     try {
       const { AC, transmission, kitchen, TV, bathroom, form } =
         getState().filters;
+      const params = {};
 
-      const params = {
-        form: form || "",
-        AC: AC || undefined,
-        transmission: transmission || "",
-        kitchen: kitchen || undefined,
-        TV: TV || undefined,
-        bathroom: bathroom || undefined,
-      };
+      if (form && ["fullyIntegrated", "panelTruck", "alcove"].includes(form)) {
+        params.form = form;
+      }
+      if (AC) params.AC = true;
+      if (transmission) params.transmission = transmission;
+      if (kitchen) params.kitchen = true;
+      if (TV) params.TV = true;
+      if (bathroom) params.bathroom = true;
 
-      const response = await travelTrucksApi.get("/", {
-        params: params,
-      });
+      const response = await travelTrucksApi.get("/", { params });
 
       if (response.status !== 200) {
         throw new Error(`Failed to fetch campers: ${response.statusText}`);

@@ -12,7 +12,7 @@ const filtersSlice = createSlice({
   },
   reducers: {
     setForm(state, action) {
-      state.type = action.payload;
+      state.form = action.payload;
     },
     setTransmission(state, action) {
       state.transmission = action.payload;
