@@ -82,91 +82,119 @@ const CatalogSideBar = () => {
       <h3 className={s.titleFilters}>Filters</h3>
 
       <button onClick={handleResetFilters} className={s.resetButton}>
-        Скинути фільтри
+        Reset filters
       </button>
 
       <h2 className={s.vehicleEquipment}>Vehicle equipment</h2>
 
       <hr />
 
-      <div className={s.filterBtnGroup}>
-        <button
-          className={`${s.filterButton} ${AC ? s.active : ""}`}
-          onClick={() => handleSetAC(!AC)}
-        >
-          <SvgIcon id="icon-ACFilter" className={s.ACFilterBtn} />
-          AC
-        </button>
-        <button
-          className={`${s.filterButton} ${transmission ? s.active : ""}`}
-          onClick={() =>
-            handleSetTransmission(
-              transmission === "Automatic" ? "" : "Automatic"
-            )
-          }
-        >
-          <SvgIcon id="icon-diagramFilter" className={s.diagramFilterBtn} />
-          Automatic
-        </button>
-        <button
-          className={`${s.filterButton} ${kitchen ? s.active : ""}`}
-          onClick={() => handleSetKitchen(!kitchen)}
-        >
-          <SvgIcon id="icon-kitchenFilter" className={s.kitchenFilterBtn} />
-          Kitchen
-        </button>
-        <button
-          className={`${s.filterButton} ${TV ? s.active : ""}`}
-          onClick={() => handleSetTV(!TV)}
-        >
-          <SvgIcon id="icon-tvFilter" className={s.tvFilterBtn} />
-          TV
-        </button>
-        <button
-          className={`${s.filterButton} ${bathroom ? s.active : ""}`}
-          onClick={() => handleSetBathroom(!bathroom)}
-        >
-          <SvgIcon id="icon-bathroomFilter" className={s.bathroomFilter} />
-          Bathroom
-        </button>
+      <div className={s.filterCheckboxGroup}>
+        <label className={`${s.checkboxLabel} ${AC ? s.active : ""}`}>
+          <input
+            type="checkbox"
+            id="AC"
+            name="checkbox"
+            checked={AC}
+            onChange={(e) => handleSetAC(e.target.checked)}
+          />
+          <SvgIcon id="icon-ACFilter" className={s.filterIcon} />
+          <span>AC</span>
+        </label>
+        <label className={`${s.checkboxLabel} ${transmission ? s.active : ""}`}>
+          <input
+            type="checkbox"
+            id="transmission"
+            name="checkbox"
+            checked={transmission === "automatic"}
+            onChange={(e) =>
+              handleSetTransmission(e.target.checked ? "automatic" : "")
+            }
+          />
+          <SvgIcon id="icon-diagramFilter" className={s.filterIcon} />
+          <span>Automatic</span>
+        </label>
+        <label className={`${s.checkboxLabel} ${kitchen ? s.active : ""}`}>
+          <input
+            type="checkbox"
+            id="kitchen"
+            name="checkbox"
+            checked={kitchen}
+            onChange={(e) => handleSetKitchen(e.target.checked)}
+          />
+          <SvgIcon id="icon-kitchenFilter" className={s.filterIcon} />
+          <span>Kitchen</span>
+        </label>
+        <label className={`${s.checkboxLabel} ${TV ? s.active : ""}`}>
+          <input
+            type="checkbox"
+            id="TV"
+            name="checkbox"
+            checked={TV}
+            onChange={(e) => handleSetTV(e.target.checked)}
+          />
+          <SvgIcon id="icon-tvFilter" className={s.filterIcon} />
+          <span>TV</span>
+        </label>
+        <label className={`${s.checkboxLabel} ${bathroom ? s.active : ""}`}>
+          <input
+            type="checkbox"
+            id="bathroom"
+            name="checkbox"
+            checked={bathroom}
+            onChange={(e) => handleSetBathroom(e.target.checked)}
+          />
+          <SvgIcon id="icon-bathroomFilter" className={s.filterIcon} />
+          <span>Bathroom</span>
+        </label>
       </div>
 
       <h2 className={s.titleVehicleType}>Vehicle type</h2>
 
       <hr />
 
-      <div className={s.filterBtnGroup}>
-        <button
-          className={`${s.filterButton} ${
-            form === "panelTruck" ? s.active : ""
-          }`}
-          onClick={() => handleSetCamperForm("panelTruck")}
+      <div className={s.filterRadioGroup}>
+        <label
+          className={`${s.radioLabel} ${form === "panelTruck" ? s.active : ""}`}
         >
-          <SvgIcon id="icon-vanFormFilter" className={s.vanFormFilterBtn} />
-          Van
-        </button>
-        <button
-          className={`${s.filterButton} ${
+          <input
+            type="radio"
+            name="form"
+            id="panelTruck"
+            checked={form === "panelTruck"}
+            onChange={() => handleSetCamperForm("panelTruck")}
+          />
+          <SvgIcon id="icon-vanFormFilter" className={s.filterIcon} />
+          <span>Van</span>
+        </label>
+        <label
+          className={`${s.radioLabel} ${
             form === "fullyIntegrated" ? s.active : ""
           }`}
-          onClick={() => handleSetCamperForm("fullyIntegrated")}
         >
-          <SvgIcon
-            id="icon-fullyIntegratedForm"
-            className={s.fullyIntegratedFormBtn}
+          <input
+            type="radio"
+            name="form"
+            id="fullyIntegrated"
+            checked={form === "fullyIntegrated"}
+            onChange={() => handleSetCamperForm("fullyIntegrated")}
           />
-          Fully Integrated
-        </button>
-        <button
-          className={`${s.filterButton} ${form === "alcove" ? s.active : ""}`}
-          onClick={() => handleSetCamperForm("alcove")}
+          <SvgIcon id="icon-fullyIntegratedForm" className={s.filterIcon} />
+          <span className={s.fullyIntegrated}>Fully Integrated</span>
+        </label>
+        <label
+          className={`${s.radioLabel} ${form === "alcove" ? s.active : ""}`}
         >
-          <SvgIcon
-            id="icon-alcoveFormFilter"
-            className={s.alcoveFormFilterBtn}
+          <input
+            type="radio"
+            name="form"
+            id="alcove"
+            checked={form === "alcove"}
+            onChange={() => handleSetCamperForm("alcove")}
           />
-          Alcove
-        </button>
+          <SvgIcon id="icon-alcoveFormFilter" className={s.filterIcon} />
+          <span>Alcove</span>
+        </label>
       </div>
 
       <button className={s.searchButton} onClick={handleSearch}>

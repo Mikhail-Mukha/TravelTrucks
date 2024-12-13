@@ -49,13 +49,13 @@ hr {
   margin: 24px 0;
 }
 
-.filterBtnGroup {
+.filterCheckboxGroup {
   display: flex;
   flex-wrap: wrap;
   gap: 12px 8px;
 }
 
-.filterButton {
+.checkboxLabel {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -69,10 +69,57 @@ hr {
   mix-blend-mode: multiply;
 }
 
-.filterButton:hover,
-.filterButton:focus {
+.checkboxLabel:hover,
+.checkboxLabel:focus-within {
   border: 1px solid #e44848;
 }
+
+.checkboxLabel input[type="checkbox"] {
+  display: none;
+}
+
+.checkboxLabel.active {
+  border: 1px solid #e44848;
+}
+
+.filterRadioGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 8px;
+}
+
+.radioLabel {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 112px;
+  height: 96px;
+  border-radius: 12px;
+  border: 1px solid var(--Button, #dadde1);
+  mix-blend-mode: multiply;
+}
+
+.radioLabel:hover,
+.radioLabel:focus-within {
+  border: 1px solid #e44848;
+}
+
+.radioLabel input[type="radio"] {
+  display: none;
+}
+
+.radioLabel.active {
+  border: 1px solid #e44848;
+}
+
+.fullyIntegrated {
+  max-width: 80px;
+  text-align: center;
+}
+
 .titleVehicleType {
   color: #101828;
   margin-top: 32px;

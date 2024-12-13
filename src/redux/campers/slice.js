@@ -5,6 +5,7 @@ const initialState = {
   items: [],
   status: "idle",
   error: null,
+  filters: {},
 };
 
 const campersSlice = createSlice({
@@ -14,7 +15,7 @@ const campersSlice = createSlice({
     setFilters(state, action) {
       state.filters = action.payload;
     },
-    resetVehicles(state) {
+    resetCampers(state) {
       state.items = [];
     },
   },
@@ -29,7 +30,7 @@ const campersSlice = createSlice({
       })
       .addCase(fetchCampers.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload;
+        state.error = action.payload?.message || action.payload;
       });
   },
 });

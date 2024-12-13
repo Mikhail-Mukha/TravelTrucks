@@ -24,6 +24,10 @@ export const fetchCampers = createAsyncThunk(
         throw new Error(`Failed to fetch campers: ${response.statusText}`);
       }
 
+      if (response.data.length === 0) {
+        return rejectWithValue("No campers found for the selected filters.");
+      }
+
       return response.data;
     } catch (error) {
       console.error("Error fetching campers:", error.message);

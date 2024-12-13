@@ -5,18 +5,27 @@ import campersReducer from "./campers/slice";
 import filtersReducer from "./filters/slice";
 import favoritesReducer from "./favorites/slice";
 
-const persistConfig = {
+const persistConfigCampers = {
+  key: "campers",
+  storage,
+};
+const persistedCampersReducer = persistReducer(
+  persistConfigCampers,
+  campersReducer
+);
+
+const persistConfigFavorites = {
   key: "favorites",
   storage,
 };
 const persistedFavoritesReducer = persistReducer(
-  persistConfig,
+  persistConfigFavorites,
   favoritesReducer
 );
 
 const store = configureStore({
   reducer: {
-    campers: campersReducer,
+    campers: persistedCampersReducer,
     filters: filtersReducer,
     favorites: persistedFavoritesReducer,
   },
