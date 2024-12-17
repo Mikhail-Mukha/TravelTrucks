@@ -35,3 +35,24 @@ export const fetchCampers = createAsyncThunk(
     }
   }
 );
+
+export const fetchCamperById = createAsyncThunk(
+  "campers/fetchCamperById",
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await travelTrucksApi.get(`/${id}`);
+
+      if (response.status !== 200) {
+        throw new Error(`Failed to fetch camper: ${response.statusText}`);
+      }
+
+      if (!response.data) {
+        return rejectWithValue("Camper not found.");
+      }
+
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

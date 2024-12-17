@@ -7,7 +7,7 @@ const Navigation = () => {
       <NavLink className={s.navLinkHome} to="/">
         Home
       </NavLink>
-      <NavLink className={s.navLinkCatalog} to="/catalog">
+      <NavLink className={s.navLinkCatalog} to="/campers">
         Catalog
       </NavLink>
     </nav>

@@ -18,7 +18,7 @@ import {
   selectForm,
 } from "../../redux/filters/selectors";
 import { fetchCampers } from "../../redux/campers/operations";
-import SvgIcon from "../SvgIcon/SvgIcon";
+import SvgIcon from "../SvgIcon/SvgIcon.jsx";
 
 const CatalogSideBar = () => {
   const dispatch = useDispatch();

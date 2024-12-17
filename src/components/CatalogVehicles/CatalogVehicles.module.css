@@ -53,14 +53,20 @@
   margin: 0;
 }
 
-.heartButton {
+.heartChackboxLabel {
   all: unset;
   cursor: pointer;
   display: flex;
   align-items: center;
 }
+.heartChackboxLabel input[type="checkbox"] {
+  display: none;
+}
 
-.heartButton:focus {
+.heartChackboxLabel
+  input[type="checkbox"]:checked
+  + .heartIconWrapper
+  .heartIconBtn {
   fill: #e44848;
 }
 
