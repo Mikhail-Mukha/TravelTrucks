@@ -23,6 +23,7 @@ const campersSlice = createSlice({
     builder
       .addCase(fetchCampers.pending, (state) => {
         state.status = "loading";
+        state.error = null;
       })
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.status = "succeeded";
@@ -30,7 +31,7 @@ const campersSlice = createSlice({
       })
       .addCase(fetchCampers.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload?.message || action.payload;
+        state.error = action.payload || "Failed to fetch campers.";
       });
   },
 });

@@ -53,17 +53,21 @@ const CatalogSideBar = () => {
     dispatch(setBathroom(value));
   };
 
-  const handleSearch = () => {
-    const filters = {
-      form,
-      AC,
-      transmission,
-      kitchen,
-      TV,
-      bathroom,
-    };
+  const handleSearch = async () => {
+    try {
+      const filters = {
+        form: "panelTruck",
+        AC: true,
+        transmission: "automatic",
+        kitchen: true,
+        TV: true,
+        bathroom: true,
+      };
 
-    dispatch(fetchCampers(filters));
+      await dispatch(fetchCampers(filters)).unwrap();
+    } catch (error) {
+      console.error("Search failed:", error);
+    }
   };
 
   const handleResetFilters = () => {

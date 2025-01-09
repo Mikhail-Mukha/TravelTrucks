@@ -1,28 +1,51 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectCampers } from "../../redux/campers/selectors";
+import {
+  selectCampers,
+  selectError,
+  selectLoading,
+} from "../../redux/campers/selectors.js";
 import {
   addToFavorites,
   removeFromFavorites,
 } from "../../redux/favorites/slice";
-import { selectFavorites } from "../../redux/favorites/selectors";
+import { selectFavorites } from "../../redux/favorites/selectors.js";
 
 import s from "./CatalogVehicles.module.css";
-import SvgIcon from "../SvgIcon/SvgIcon";
+import SvgIcon from "../SvgIcon/SvgIcon.jsx";
 import { useEffect } from "react";
-import { fetchCampers } from "../../redux/campers/operations";
+import { fetchCampers } from "../../redux/campers/operations.js";
 import { NavLink } from "react-router-dom";
+import NotFound from "../../pages/NotFound/NotFound.jsx";
 
 const CatalogVehicles = () => {
   const dispatch = useDispatch();
   const campers = useSelector(selectCampers);
   const favorites = useSelector(selectFavorites);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchCampers());
+    const filters = {
+      form: "panelTruck",
+      AC: true,
+      transmission: "automatic",
+      kitchen: true,
+      TV: true,
+      bathroom: true,
+    };
+    dispatch(fetchCampers(filters));
   }, [dispatch]);
 
+  if (loading === "loading") {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <NotFound />;
+  }
+
   if (!campers || campers.items.length === 0) {
-    return <div className={s.noResultsMessage}>No campers found.</div>;
+    return <NotFound />;
   }
 
   const handleSelectFavorites = (camper) => {
@@ -58,7 +81,6 @@ const CatalogVehicles = () => {
                 <label className={s.heartChackboxLabel}>
                   <input
                     type="checkbox"
-                    id="favorites"
                     name="favorites"
                     checked={favorites.some((fav) => fav.id === camper.id)}
                     onChange={() => handleSelectFavorites(camper)}

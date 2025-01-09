@@ -8,7 +8,7 @@ const HomePage = () => {
       <p className={s.paragraphHomePage}>
         You can find everything you want in our catalog
       </p>
-      <NavLink className={s.navLinkButton} to="/catalog">
+      <NavLink className={s.navLinkButton} to="/campers">
         View Now
       </NavLink>
     </div>
