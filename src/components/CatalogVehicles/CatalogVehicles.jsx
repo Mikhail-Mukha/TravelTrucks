@@ -44,7 +44,7 @@ const CatalogVehicles = () => {
     return <NotFound />;
   }
 
-  if (!campers || campers.items.length === 0) {
+  if (!campers || !campers.items || campers.items.length === 0) {
     return <NotFound />;
   }
 
